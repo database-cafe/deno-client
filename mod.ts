@@ -13,6 +13,15 @@ export class Client {
     }
     return data.Data;
   }
+
+  async listData<T>(typeID: string): Promise<T> {
+    const response = await fetch(`${this.endpoint}/data?type=${typeID}`);
+    const data = await response.json();
+    if (data.Error !== "") {
+      throw new Error(data.Error);
+    }
+    return data.Data;
+  }
 }
 
 export interface Struct {
