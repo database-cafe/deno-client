@@ -5,7 +5,7 @@ export class Client {
     this.endpoint = endpoint;
   }
 
-  async listStructs(): Promise<Struct[]> {
+  async listStructs(): Promise<{[key: string]: Struct}> {
     const response = await fetch(`${this.endpoint}/structs`);
     const data = await response.json();
     if (data.Error !== "") {
@@ -14,7 +14,7 @@ export class Client {
     return data.Data;
   }
 
-  async listData<T>(typeID: string): Promise<T> {
+  async listData<T>(typeID: string): Promise<{[key: string]: T}> {
     const response = await fetch(`${this.endpoint}/data?type=${typeID}`);
     const data = await response.json();
     if (data.Error !== "") {
