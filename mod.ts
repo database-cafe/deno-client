@@ -1,7 +1,7 @@
 export class Client {
   endpoint: string;
 
-  constructor(endpoint: string) {
+  constructor(endpoint: string = "https://database.cafe/api") {
     this.endpoint = endpoint;
   }
 
